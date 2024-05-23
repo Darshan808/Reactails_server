@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Delete server.pid if it exists
+rm -f /reactails/server/tmp/pids/server.pid 2>&1
+
+# Run setup
+echo "Setup project"
+./bin/docker/setup
+
+# Start server
+./bin/dev
+
+# If exited from server, open a shell
+/bin/bash

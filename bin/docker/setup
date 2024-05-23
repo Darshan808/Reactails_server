@@ -1,0 +1,20 @@
+# !/bin/sh
+
+# Remove tmp folder
+rm -rf /reactails/server/tmp
+
+
+# Install ruby dependencies
+gem install bundler
+bundle config set --local without "production"
+bundle config set --local path "/home/vendor/bundle"
+bundle install
+
+# Setup database
+bundle exec rails db:create
+bundle exec rails db:schema:load
+bundle exec rails db:migrate
+bundle exec rails db:seed
+
+# Write a tmp file to indicate that setup is complete
+touch /reactails/server/tmp/setup_complete
