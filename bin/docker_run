@@ -1,0 +1,7 @@
+#!/bin/bash
+
+docker compose up -d --build
+# Run docker-compose exec web bin/docker/boot
+docker compose exec server bin/entrypoint.sh
+# Run docker-compose down
+docker compose down

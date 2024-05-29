@@ -1,8 +1,8 @@
 if (Get-Command -Name "docker" -ErrorAction SilentlyContinue) {
     # Run docker-compose up
-    docker compose up -d
+    docker compose up -d --build
     # Run docker-compose exec to boot the image
-    docker compose exec web bin/entrypoint.sh
+    docker compose exec server bin/entrypoint.sh
     # Run docker-compose down
     docker compose down
 }
